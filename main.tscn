@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://glowshader.shader" type="Shader" id=1]
+[ext_resource path="res://player1.png" type="Texture" id=2]
+[ext_resource path="res://player-Emission1.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/glow_color = Color( 1, 0.537255, 0, 1 )
+shader_param/emission_teture = ExtResource( 3 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 100, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 200, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 300, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 400, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 500, 0, 100, 50 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 600, 0, 100, 50 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="Environment" id=10]
+background_mode = 4
+glow_enabled = true
+glow_strength = 0.8
+glow_blend_mode = 0
+
+[node name="main" type="Node2D"]
+
+[node name="player" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
+material = SubResource( 1 )
+position = Vector2( 241.007, 81.8188 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
